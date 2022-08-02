@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
-import java.util.Map;
 
 
 
@@ -22,7 +21,7 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    /*@PostMapping("/product/upload")
+    @PostMapping("/product/upload")
     public ResponseEntity<?> upload(@RequestParam("file")MultipartFile file ) {
 
         if (Helper.checkExcelFormat(file)) {
@@ -36,10 +35,10 @@ public class ProductController {
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Please upload excel file only");
     }
-@GetMapping("/product")
+    @GetMapping("/product")
     public List<Product> getAllProduct(){
         return this.productService.getAllProducts();
-}*/
+}
     }
 
 

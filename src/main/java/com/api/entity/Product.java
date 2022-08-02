@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Product {
+public class    Product {
     @Id
     private Integer productId;
 
