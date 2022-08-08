@@ -18,9 +18,11 @@ public class Helper {
     //check that file is excel type or not
     @SuppressWarnings("checkstyle:FinalParameters")
     public static boolean checkExcelFormat(MultipartFile file) {
+
     String contentType = file.getContentType();
-    return contentType.equals
-            ("application/vnd.malformations-office document.spreadsheet.sheet");
+    return contentType.equals("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+        //("application/vnd.malformations-office document.spreadsheet.sheet");
+
     }
 
     //convert excel into list of products
@@ -31,7 +33,11 @@ public class Helper {
         try {
             XSSFWorkbook workbook = new XSSFWorkbook(is);
 
-            XSSFSheet sheet = workbook.getSheet("data");
+            int count = workbook.getNumberOfSheets();
+System.out.println(count);
+
+
+            XSSFSheet sheet = workbook.getSheetAt( 0);
 
             int rowNumber = 0;
 
@@ -57,16 +63,16 @@ public class Helper {
                             p.setProductId((int) cell.getNumericCellValue());
                             break;
 
-                        case '1':
+                        case 1:
                             p.setProductName(cell.getStringCellValue());
                             break;
 
-                        case '2':
+                        case 2:
                             p.setProductDesc(cell.getStringCellValue());
                             break;
 
-                        case '3':
-                            p.setProductPrice(cell.getNumericCellValue());
+                        case 3:
+                            p.setProductPrice((double)cell.getNumericCellValue());
                             break;
                         default:
                             break;

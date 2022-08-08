@@ -23,8 +23,9 @@ public class ProductController {
 
     @PostMapping("/product/upload")
     public ResponseEntity<?> upload(@RequestParam("file")MultipartFile file ) {
+        Boolean isCorrectFile=Helper.checkExcelFormat(file);
 
-        if (Helper.checkExcelFormat(file)) {
+        if (isCorrectFile) {
 
             //true
 
